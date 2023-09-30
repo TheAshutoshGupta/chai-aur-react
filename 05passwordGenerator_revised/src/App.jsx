@@ -7,7 +7,8 @@ function App() {
   const [numberAlllowed,setNumberAllowed]=useState(false);
   const [charAllowed,setCharAllowed]=useState(false);
   const [password,setPassword]=useState("");
-  const [btn,setbtn]=useStat
+  const [btn,setbtn]=useState(false);
+
 
   //ref hook
   const passwordRef=useRef(null);
@@ -29,8 +30,9 @@ function App() {
     }
     setPassword(pass);
   },[length,numberAlllowed,charAllowed,setPassword])
-
+ 
   const copyPasswordToClipboard=useCallback(()=>{
+    setbtn(true)
     passwordRef.current?.select()
     window.navigator.clipboard.writeText(password);
   },[password])
@@ -52,7 +54,7 @@ function App() {
             readOnly
             ref={passwordRef}
           />
-          <button onClick={copyPasswordToClipboard} className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0'>copy</button>
+          <button onClick={copyPasswordToClipboard} className={`outline-none ${!btn?"bg-blue-700":"bg-gray-600"} text-white px-3 py-0.5 shrink-0`}>copy</button>
         </div>
         <div className='flex text-sm gap-x-2'>
           <div className='flex items-center gap-x-1'>
