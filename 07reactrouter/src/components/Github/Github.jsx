@@ -14,8 +14,9 @@ function Github() {
     
   return (
     <div><div className='text-center m-4 bg-gray-400 text-white p-4 text-3xl'>Github followers :
-    {data.followers} </div>
-    <img src={data.avatar_url}/></div>
+    {data.followers}
+    <img src={data.avatar_url}/> </div>
+    </div>
     
   )
 }
