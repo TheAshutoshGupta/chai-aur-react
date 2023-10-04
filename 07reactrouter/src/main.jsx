@@ -4,7 +4,7 @@ import './index.css'
 import { Router, RouterProvider, createBrowserRouter, Route, createRoutesFromElements } from 'react-router-dom'
 import {Home, About, Contact, User} from './components'
 import Layout from './Layout'
-import Github from './components/Github/Github'
+import Github, { githubinfoLoader } from './components/Github/Github'
 
 /* const router = createBrowserRouter([
   {
@@ -32,7 +32,12 @@ const router=createBrowserRouter(
       <Route path='about' element={<About/>}/>
       <Route path='contact' element={<Contact/>}/>
       <Route path='user/:userid' element={<User/>}/>
-      <Route path='github' element={<Github/>}/>
+
+      {/* loader will fetch the data on hover and wont wait for the onclick event */}
+      <Route
+      loader={githubinfoLoader}
+      path='github'
+      element={<Github/>}/>
     </Route>
   )
 )
